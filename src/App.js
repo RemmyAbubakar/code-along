@@ -4,7 +4,7 @@
 // import Navbar from "./components/Navbar"
 // import Practice from "./components/Practice"
 
-// import TaskManager from "./components/TaskManager";
+import TaskManager from "./components/TaskManager";
 
 // function App(){
 //   return(
@@ -21,12 +21,12 @@
 //   ) ;
 // }
 
-import Form from "./components/Form";
+// import Form from "./components/Form";
+
 function App(){
   return(
     <div>
-       {/* <TaskManager /> */}
-       <Form />
+       <TaskManager /> 
     </div>
   )
 }
