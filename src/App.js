@@ -4,7 +4,9 @@
 // import Navbar from "./components/Navbar"
 // import Practice from "./components/Practice"
 
-import TaskManager from "./components/TaskManager";
+// import Products from "./components/Products";
+// import TaskManager from "./components/TaskManager";
+import ProductList from "./components/ProductList";
 
 // function App(){
 //   return(
@@ -26,7 +28,7 @@ import TaskManager from "./components/TaskManager";
 function App(){
   return(
     <div>
-       <TaskManager /> 
+      <ProductList />
     </div>
   )
 }
