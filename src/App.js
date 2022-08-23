@@ -6,8 +6,8 @@
 
 // import Products from "./components/Products";
 // import TaskManager from "./components/TaskManager";
-import ProductList from "./components/ProductList";
-import Spinner from "./components/Spinner";
+// import ProductList from "./components/ProductList";
+// import Spinner from "./components/Spinner";
 
 // function App(){
 //   return(
@@ -25,13 +25,29 @@ import Spinner from "./components/Spinner";
 // }
 
 // import Form from "./components/Form";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import TaskManager from "./components/TaskManager";
+import ProductList from "./components/ProductList";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Navbar from "./components/Navbar";
+
 
 function App(){
   return(
-    <div>
-      <ProductList />
-    </div>
-  )
-}
+     <BrowserRouter>
+     <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/products" element={<ProductList />} />
+          <Route path="/task-manager" element={<TaskManager />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+     </BrowserRouter>
+  );
+};
 
 export default App;
