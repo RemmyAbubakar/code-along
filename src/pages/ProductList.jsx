@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Products from './Products';
+import Products from '../components/Products';
 import useAxios from '../hooks/useAxios';
-import Spinner from './Spinner';
+import Spinner from '../components/Spinner';
 
 
 function ProductList() {
@@ -29,7 +29,7 @@ if (error) return <p>{error}</p>;
   return (
     <div className='flex flex-wrap gap-10 justify-center pt-10'>
     {
-      data.map((data) => (<Products product={data}/>))
+      data?.map((data) => (<Products product={data}/>))
     }</div>
   )
 }
