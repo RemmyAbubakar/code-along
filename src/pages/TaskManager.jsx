@@ -25,16 +25,40 @@ const handleSubmit = e => {
      setInput('');
     //  localStorage.setItem("tasks", JSON.stringify(tasks));
 }
-
-useEffect(() => {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-  }, [tasks]);
-
-
      const handleDelete = (id) => {
-        const newTasks = tasks.filter(task => task.id !== id);
+        const newTasks = tasks.filter((task) => task.id !== id);
         setValue(newTasks);
      }
+
+
+     const handleCompleted = (id) => {
+          const newTasks = tasks.map((task) => {
+               if(task.id === id){
+                  return {
+                    ...task,
+                    completed: !task.completed,
+                  }
+               }
+               return task;
+          })
+          setValue(newTasks);
+     };
+
+     const handleEdit = (id) => {
+        const newTasks = tasks.filter((task) => {
+            if (task.id === id){
+                setInput(task.text);
+                return false;
+            }
+            return task;
+        })
+        setValue(newTasks);
+     };
+
+
+     useEffect(() => {
+       localStorage.setItem("tasks", JSON.stringify(tasks));
+     }, [tasks]);
 
 
     return(
@@ -45,9 +69,14 @@ useEffect(() => {
                 <button type = "submit" className='bg-blue-600 text-white text-lg py-2 px-5 rounded-md' disabled = {input === ""} >Add</button>
             </form>
          <div className="space-y-3 overflow-y-auto h-56">
-
             {
-                tasks.map((task) =>  (<TaskItem key={task.id} task={task} handleDelete={handleDelete} />))
+                tasks.map((task) =>  (<TaskItem 
+                    key={task.id} 
+                    task={task} 
+                    handleDelete={handleDelete}
+                    handleCompleted={handleCompleted}
+                    handleEdit={handleEdit}
+                    />))
              }
         </div>
 
